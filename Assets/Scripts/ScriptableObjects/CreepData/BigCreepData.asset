@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4952d670a9504a5599ebac5a6ac9de9a, type: 3}
-  m_Name: CreepData
+  m_Name: BigCreepData
   m_EditorClassIdentifier: 
-  TravelSpeed: 4
-  MaxLife: 10
-  HitDamage: 2
-  Reward: 10
+  TravelSpeed: 2
+  MaxLife: 20
+  HitDamage: 4
+  Reward: 20
