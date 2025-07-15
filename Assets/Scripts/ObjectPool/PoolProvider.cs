@@ -29,7 +29,6 @@ namespace ObjectPool
             });
             
             _objectPools.Add(prefab.name, newPool);
-
             return newPool.Get();
         }
 

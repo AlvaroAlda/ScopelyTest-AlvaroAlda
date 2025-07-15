@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creepEvents: {fileID: 11400000, guid: b95bcc3f762861648bad173b03dabe13, type: 2}
   waveEvents: {fileID: 11400000, guid: 4d7530de34fe214468afb8fba31d6242, type: 2}
+  gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
   waves:
+  - {fileID: 11400000, guid: 6df92329e7f1a0b4aad90c8cf4a61577, type: 2}
   - {fileID: 11400000, guid: 6df92329e7f1a0b4aad90c8cf4a61577, type: 2}
   spawnPoints:
   - {fileID: 0}
@@ -54,5 +56,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   defendingBase: {fileID: 0}
-  creepToSpawn: {fileID: 7385218276953948586, guid: e432f97cfc9ec0646898a611121a14ed,
-    type: 3}
