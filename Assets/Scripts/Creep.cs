@@ -6,6 +6,7 @@ public class Creep : BasePooledObject, ITurretTarget
 {
     [SerializeField] private CreepData creepData;
     [SerializeField] private CreepEvents creepEvents;
+    [SerializeField] private GameEvents gameEvents;
 
     private bool _creepInitialized;
     private float _currentLife;
@@ -14,10 +15,27 @@ public class Creep : BasePooledObject, ITurretTarget
 
     private Vector3 _targetPosition;
     public Vector3 TargetPosition => transform.position;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        gameEvents.OnGameStart += OnGameStart;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        gameEvents.OnGameStart -= OnGameStart;
+    }
     
+    private void OnGameStart()
+    {
+       gameObject.SetActive(false);
+    }
+
     private void Update()
     {
-        if (!_creepInitialized)
+        if (!_creepInitialized || !gameObject.activeInHierarchy)
             return;
 
         var distance = Vector3.Distance(_defendingBase.transform.position, transform.position);

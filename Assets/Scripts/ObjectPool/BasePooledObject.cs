@@ -7,7 +7,9 @@ namespace ObjectPool
     {
         protected abstract void OnSpawn();
         protected abstract void OnDespawn();
-        public string prefabName;
+        
+        public string PrefabName { get; set; }
+        private static bool _isQuitting = false;
 
         protected virtual void OnEnable()
         {
@@ -19,10 +21,18 @@ namespace ObjectPool
             PushToPool();
             OnDespawn();
         }
+        
+        private void OnApplicationQuit()
+        {
+            _isQuitting = true;
+        }
 
         private void PushToPool()
         {
-            var pool = PoolProvider.SharedInstance.GetPoolFromPrefabName(prefabName);
+            if (_isQuitting)
+                return;
+            
+            var pool = PoolProvider.SharedInstance.GetPoolFromPrefabName(PrefabName);
             pool?.Push(this);
         }
     }

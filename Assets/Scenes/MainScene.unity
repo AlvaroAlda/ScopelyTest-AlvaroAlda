@@ -1198,6 +1198,17 @@ PrefabInstance:
       objectReference: {fileID: 1474536683}
     - target: {fileID: 877891919803321755, guid: e109f8a456f104944bda7640b1c798fb,
         type: 3}
+      propertyPath: waves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 877891919803321755, guid: e109f8a456f104944bda7640b1c798fb,
+        type: 3}
+      propertyPath: waves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6df92329e7f1a0b4aad90c8cf4a61577,
+        type: 2}
+    - target: {fileID: 877891919803321755, guid: e109f8a456f104944bda7640b1c798fb,
+        type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 648785047}

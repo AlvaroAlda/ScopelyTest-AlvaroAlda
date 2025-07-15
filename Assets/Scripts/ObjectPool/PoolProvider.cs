@@ -24,7 +24,7 @@ namespace ObjectPool
             var newPool = new ObjectPool<BasePooledObject>(() =>
             {
                 var pooledObject = Instantiate(prefab);
-                pooledObject.prefabName = prefab.name;
+                pooledObject.PrefabName = prefab.name;
                 return pooledObject;
             });
             

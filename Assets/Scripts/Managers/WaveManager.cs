@@ -69,6 +69,7 @@ public class WaveManager : MonoBehaviour
         _killedCreeps++;
         if (_killedCreeps >= _currentWave.TotalCreepsToSpawn)
         {
+            _killedCreeps = 0;
             waveEvents.TriggerWaveFinished(_currentWave);
             StartNextWave();
         }

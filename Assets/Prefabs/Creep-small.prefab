@@ -298,6 +298,7 @@ MonoBehaviour:
   prefabName: 
   creepData: {fileID: 11400000, guid: 8ba857a1804123d4b889481f9bf1efdd, type: 2}
   creepEvents: {fileID: 11400000, guid: b95bcc3f762861648bad173b03dabe13, type: 2}
+  gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
 --- !u!65 &5176567186527560801
 BoxCollider:
   m_ObjectHideFlags: 0
