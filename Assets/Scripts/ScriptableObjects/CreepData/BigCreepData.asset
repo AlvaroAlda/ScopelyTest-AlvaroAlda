@@ -15,4 +15,6 @@ MonoBehaviour:
   TravelSpeed: 2
   MaxLife: 20
   HitDamage: 4
+  HitRange: 7
+  HitRate: 0.5
   Reward: 20
