@@ -9,6 +9,7 @@ public class CurrencyManager : Singleton<CurrencyManager>
     [SerializeField] private WaveEvents waveEvents;
     [SerializeField] private CreepEvents creepEvents;
     [SerializeField] private CurrencyEvents currencyEvents;
+    [SerializeField] private GameEvents gameEvents;
 
     public int initCoins;
 
@@ -26,12 +27,14 @@ public class CurrencyManager : Singleton<CurrencyManager>
 
     private void OnEnable()
     {
+        gameEvents.OnGameStart += OnGameStart;
         waveEvents.OnWaveFinished += OnWaveFinished;
         creepEvents.OnCreepDestroyed += OnCreepDestroyed;
     }
-    
+
     private void OnDisable()
     {
+        gameEvents.OnGameStart -= OnGameStart;
         waveEvents.OnWaveFinished -= OnWaveFinished;
         creepEvents.OnCreepDestroyed -= OnCreepDestroyed;
     }
@@ -40,7 +43,7 @@ public class CurrencyManager : Singleton<CurrencyManager>
 
     private void OnCreepDestroyed(CreepData creepData) => AddCurrency(creepData.Reward);
 
-    private void Start()
+    private void OnGameStart()
     {
         CurrentCoins = initCoins;
     }

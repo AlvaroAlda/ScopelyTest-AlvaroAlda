@@ -480,6 +480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4434183787859061631}
+  - component: {fileID: 5453171967857554708}
   m_Layer: 5
   m_Name: UiManager
   m_TagString: Untagged
@@ -510,6 +511,21 @@ RectTransform:
   m_AnchoredPosition: {x: 862, y: 574.5}
   m_SizeDelta: {x: 1724, y: 1149}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5453171967857554708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168234196154113420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9290a543a10240bba7133e9cc8028a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPopup: {fileID: 6693158930190948094}
+  losePopup: {fileID: 104378792946923127}
+  gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
 --- !u!1001 &2686789090561767502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -672,6 +688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6546808888599276408, guid: fdaa60ba925ea4ad78e77997673c4c0f,
         type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546808888599276408, guid: fdaa60ba925ea4ad78e77997673c4c0f,
+        type: 3}
       propertyPath: m_FontData.m_BestFit
       value: 1
       objectReference: {fileID: 0}
@@ -741,7 +762,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 409887086638967117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5453171967857554708}
+        m_TargetAssemblyTypeName: UiController, Assembly-CSharp
+        m_MethodName: StartNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6693158930190948094}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &409887086638967117 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2376020796535902467, guid: fdaa60ba925ea4ad78e77997673c4c0f,
@@ -757,6 +802,12 @@ MonoBehaviour:
 --- !u!224 &3426944879293692930 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 776748096744899660, guid: fdaa60ba925ea4ad78e77997673c4c0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2686789090561767502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6693158930190948094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8767247216979472048, guid: fdaa60ba925ea4ad78e77997673c4c0f,
     type: 3}
   m_PrefabInstance: {fileID: 2686789090561767502}
   m_PrefabAsset: {fileID: 0}
@@ -922,6 +973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6546808888599276408, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
         type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546808888599276408, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
+        type: 3}
       propertyPath: m_FontData.m_BestFit
       value: 1
       objectReference: {fileID: 0}
@@ -942,6 +998,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00e34a4cbdf924c0d8fee7214288eaf7, type: 3}
+--- !u!1 &104378792946923127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8767247216979472048, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 8708087085320935623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6350081257594816964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2376020796535902467, guid: 00e34a4cbdf924c0d8fee7214288eaf7,
@@ -1003,7 +1065,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6350081257594816964}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5453171967857554708}
+        m_TargetAssemblyTypeName: UiController, Assembly-CSharp
+        m_MethodName: StartNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 104378792946923127}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &8223229142943423627 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 776748096744899660, guid: 00e34a4cbdf924c0d8fee7214288eaf7,

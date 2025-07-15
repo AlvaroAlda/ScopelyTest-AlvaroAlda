@@ -428,6 +428,7 @@ MonoBehaviour:
   waveEvents: {fileID: 11400000, guid: 4d7530de34fe214468afb8fba31d6242, type: 2}
   creepEvents: {fileID: 11400000, guid: b95bcc3f762861648bad173b03dabe13, type: 2}
   currencyEvents: {fileID: 11400000, guid: e37956b56ad0f764bbe6b69d59ae0837, type: 2}
+  gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
   initCoins: 100
 --- !u!4 &879146031
 Transform:
@@ -669,6 +670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 207342603}
     m_Modifications:
+    - target: {fileID: 1474536683, guid: 458d7fbe6b08d464f9bbc0ea868876a4, type: 3}
+      propertyPath: gameEvents
+      value: 
+      objectReference: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1,
+        type: 2}
     - target: {fileID: 863164606739977221, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -916,6 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f4aa778cc63854186d04c125362291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
 --- !u!4 &1479308697
 Transform:
   m_ObjectHideFlags: 0
@@ -1167,7 +1174,7 @@ PrefabInstance:
     - target: {fileID: 9168234196154113420, guid: 9f8f723f35d76a84c9cb31e96c773da1,
         type: 3}
       propertyPath: m_Name
-      value: UiManager
+      value: UiController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f8f723f35d76a84c9cb31e96c773da1, type: 3}
@@ -1180,15 +1187,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 877891919803321755, guid: e109f8a456f104944bda7640b1c798fb,
         type: 3}
-      propertyPath: waveEvents
+      propertyPath: gameEvents
       value: 
-      objectReference: {fileID: 11400000, guid: 4d7530de34fe214468afb8fba31d6242,
-        type: 2}
-    - target: {fileID: 877891919803321755, guid: e109f8a456f104944bda7640b1c798fb,
-        type: 3}
-      propertyPath: creepEvents
-      value: 
-      objectReference: {fileID: 11400000, guid: b95bcc3f762861648bad173b03dabe13,
+      objectReference: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1,
         type: 2}
     - target: {fileID: 877891919803321755, guid: e109f8a456f104944bda7640b1c798fb,
         type: 3}
