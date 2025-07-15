@@ -1,4 +1,3 @@
-using System;
 using ObjectPool;
 using UnityEngine;
 
@@ -10,11 +9,12 @@ public class Creep : BasePooledObject, ITurretTarget
 
     private bool _creepInitialized;
     private float _currentLife;
-    private DefendingBase _defendingBase;
     private float _hitTime;
-
-    private Vector3 _targetPosition;
+    
+    private DefendingBase _defendingBase;
     public Vector3 TargetPosition => transform.position;
+    public bool TargetDestroyed { get; private set; }
+    
 
     protected override void OnEnable()
     {
@@ -53,6 +53,7 @@ public class Creep : BasePooledObject, ITurretTarget
             DestroyTarget();
     }
 
+    //TODO: Remove this in the future
     private void OnMouseDown()
     {
         DestroyTarget();
@@ -60,6 +61,8 @@ public class Creep : BasePooledObject, ITurretTarget
 
     public void DestroyTarget()
     {
+        TargetDestroyed = true;
+        
         //Trigger event
         creepEvents.TriggerCreepDestroyed(creepData);
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TowerBullet : MonoBehaviour
+public class TurretSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     private void Start()

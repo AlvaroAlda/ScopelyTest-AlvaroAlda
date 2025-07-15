@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CreepData", menuName = "TowerDefense/CreepData", order = 0)]
+[CreateAssetMenu(fileName = "CreepData", menuName = "TowerDefense/NewCreep", order = 0)]
 public class CreepData : ScriptableObject
 {
     public float TravelSpeed;

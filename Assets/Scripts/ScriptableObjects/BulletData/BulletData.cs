@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BulletData", menuName = "TowerDefense/BulletData", order = 0)]
+[CreateAssetMenu(fileName = "BulletData", menuName = "TowerDefense/NewBullet", order = 0)]
 public class BulletData : ScriptableObject
 {
     public float BulletDamage;

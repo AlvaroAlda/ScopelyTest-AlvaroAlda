@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WaveData", menuName = "TowerDefense/WaveData", order = 0)]
+[CreateAssetMenu(fileName = "WaveData", menuName = "TowerDefense/NewWave", order = 0)]
 public class WaveData : ScriptableObject
 {
     public Creep[] AvailableCreeps;
