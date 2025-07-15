@@ -1,6 +1,8 @@
+using System;
+using ObjectPool;
 using UnityEngine;
 
-public class Creep : MonoBehaviour, ITurretTarget
+public class Creep : BasePooledObject, ITurretTarget
 {
     [SerializeField] private CreepData creepData;
     [SerializeField] private CreepEvents creepEvents;
@@ -25,18 +27,17 @@ public class Creep : MonoBehaviour, ITurretTarget
         else
             transform.position += transform.forward * (Time.deltaTime * creepData.TravelSpeed);
     }
-
-    // Start is called before the first frame update
-    private void OnEnable()
-    {
-        _currentLife = creepData.MaxLife;
-    }
-
+    
     public void HitTarget(float damage)
     {
         _currentLife -= damage;
         if (_currentLife <= 0)
             DestroyTarget();
+    }
+
+    private void OnMouseDown()
+    {
+        DestroyTarget();
     }
 
     public void DestroyTarget()
@@ -69,5 +70,15 @@ public class Creep : MonoBehaviour, ITurretTarget
         {
             _hitTime += Time.deltaTime;
         }
+    }
+
+    protected override void OnSpawn()
+    {
+        _currentLife = creepData.MaxLife;
+    }
+
+    protected override void OnDespawn()
+    {
+        _currentLife = creepData.MaxLife;
     }
 }

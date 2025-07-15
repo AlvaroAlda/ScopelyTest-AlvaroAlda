@@ -1,4 +1,5 @@
 using EventChannels.WaveEvents;
+using ObjectPool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -91,7 +92,9 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnCreep()
     {
-        var creep = Instantiate(_currentWave.AvailableCreeps[Random.Range(0, _currentWave.AvailableCreeps.Length)]);
+        var creepPrefab = _currentWave.AvailableCreeps[Random.Range(0, _currentWave.AvailableCreeps.Length)];
+        
+        var creep = (Creep)PoolProvider.SharedInstance.GetPrefab(creepPrefab);
         creep.InitCreep(defendingBase, spawnPoints[Random.Range(0, spawnPoints.Length)].position);
 
         _spawnCreepTime = 0;
