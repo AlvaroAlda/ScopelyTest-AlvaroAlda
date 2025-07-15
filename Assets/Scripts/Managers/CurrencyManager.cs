@@ -1,18 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using System;
+using EventChannels.WaveEvents;
 using UnityEngine;
 
-public class CurrencyManager : MonoBehaviour
+public class CurrencyManager : Singleton<CurrencyManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Event Channels")] 
+    [SerializeField] private WaveEvents waveEvents;
+    [SerializeField] private CreepEvents creepEvents;
+    [SerializeField] private CurrencyEvents currencyEvents;
+
+    public int initCoins;
+
+    private int _currentCoins;
+
+    private int CurrentCoins
     {
-        
+        get => _currentCoins;
+        set
+        {
+            _currentCoins = value; 
+            currencyEvents.TriggerCurrencyChanged(value);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
+        waveEvents.OnWaveFinished += OnWaveFinished;
+        creepEvents.OnCreepDestroyed += OnCreepDestroyed;
+    }
+    
+    private void OnDisable()
+    {
+        waveEvents.OnWaveFinished -= OnWaveFinished;
+        creepEvents.OnCreepDestroyed -= OnCreepDestroyed;
+    }
+
+    private void OnWaveFinished(WaveData waveData) => AddCurrency(waveData.WaveSuccessReward);
+
+    private void OnCreepDestroyed(CreepData creepData) => AddCurrency(creepData.Reward);
+
+    private void Start()
+    {
+        CurrentCoins = initCoins;
+    }
+
+    public bool TrySpendCurrency(int cost)
+    {
+        if (CurrentCoins < cost)
+            return false;
         
+        CurrentCoins -= cost;
+        return true;
+    }
+
+    void AddCurrency(int amount)
+    {
+        CurrentCoins += amount;
     }
 }

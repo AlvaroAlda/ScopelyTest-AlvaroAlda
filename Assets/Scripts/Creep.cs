@@ -66,7 +66,9 @@ public class Creep : MonoBehaviour, ITarget
 
     public void DestroyTarget()
     {
+        //Trigger event
         creepEvents.TriggerCreepDestroyed(creepData);
+        
         _creepInitialized = true;
         gameObject.SetActive(false);
     }

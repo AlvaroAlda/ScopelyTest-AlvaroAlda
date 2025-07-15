@@ -89,6 +89,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8088236998382777950}
+  - component: {fileID: 1915434207}
   m_Layer: 5
   m_Name: WaveLabel
   m_TagString: Untagged
@@ -117,6 +118,20 @@ RectTransform:
   m_AnchoredPosition: {x: 1620, y: -1054}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1915434207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148213662751044947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a54399578e3ac4ab0434e0ca207d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveText: {fileID: 680481158766741150}
+  waveEvents: {fileID: 11400000, guid: 4d7530de34fe214468afb8fba31d6242, type: 2}
 --- !u!1 &4146867081059814380
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8045798879634858409}
   - component: {fileID: 8864119054667187101}
+  - component: {fileID: 1754475191}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -441,6 +457,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1754475191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695090544871012541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28667b59c4b0ce84ab2ff51af10b512d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currencyEvents: {fileID: 11400000, guid: e37956b56ad0f764bbe6b69d59ae0837, type: 2}
+  currencyText: {fileID: 8379285930908942945}
 --- !u!1 &9168234196154113420
 GameObject:
   m_ObjectHideFlags: 0
