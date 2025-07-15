@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Creep : MonoBehaviour, ITarget
+public class Creep : MonoBehaviour, ITurretTarget
 {
     [SerializeField] private CreepData creepData;
     [SerializeField] private CreepEvents creepEvents;
@@ -11,7 +11,8 @@ public class Creep : MonoBehaviour, ITarget
     private float _hitTime;
 
     private Vector3 _targetPosition;
-
+    public Vector3 TargetPosition => transform.position;
+    
     private void Update()
     {
         if (!_creepInitialized)
@@ -30,8 +31,6 @@ public class Creep : MonoBehaviour, ITarget
     {
         _currentLife = creepData.MaxLife;
     }
-
-    public Vector3 TargetPosition => transform.position;
 
     public void HitTarget(float damage)
     {
