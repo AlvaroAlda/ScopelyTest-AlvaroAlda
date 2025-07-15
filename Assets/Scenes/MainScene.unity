@@ -670,11 +670,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 207342603}
     m_Modifications:
-    - target: {fileID: 1474536683, guid: 458d7fbe6b08d464f9bbc0ea868876a4, type: 3}
-      propertyPath: gameEvents
-      value: 
-      objectReference: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1,
-        type: 2}
     - target: {fileID: 863164606739977221, guid: 458d7fbe6b08d464f9bbc0ea868876a4,
         type: 3}
       propertyPath: m_RootOrder
