@@ -7,9 +7,17 @@ namespace EventChannels.WaveEvents
     public class WaveEvents : ScriptableObject
     {
         public UnityAction<WaveData> OnWaveFinished = delegate { };
-        public void TriggerWaveFinished(WaveData waveData) => OnWaveFinished?.Invoke(waveData);
-        
+
         public UnityAction<WaveData, int> OnWaveStarted = delegate { };
-        public void TriggerWaveStarted(WaveData waveData, int waveIndex) => OnWaveStarted?.Invoke(waveData, waveIndex);
+
+        public void TriggerWaveFinished(WaveData waveData)
+        {
+            OnWaveFinished?.Invoke(waveData);
+        }
+
+        public void TriggerWaveStarted(WaveData waveData, int waveIndex)
+        {
+            OnWaveStarted?.Invoke(waveData, waveIndex);
+        }
     }
 }

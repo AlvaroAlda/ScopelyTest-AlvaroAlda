@@ -11,7 +11,7 @@ public class WaveLabel : MonoBehaviour
     {
         waveEvents.OnWaveStarted += OnWaveStarted;
     }
-    
+
     private void OnDisable()
     {
         waveEvents.OnWaveStarted -= OnWaveStarted;

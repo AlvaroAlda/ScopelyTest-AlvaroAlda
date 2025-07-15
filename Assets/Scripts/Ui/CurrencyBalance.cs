@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +10,7 @@ public class CurrencyBalance : MonoBehaviour
     {
         currencyEvents.OnCurrencyBalanceChanged += OnCurrencyBalanceChanged;
     }
-    
+
     private void OnDisable()
     {
         currencyEvents.OnCurrencyBalanceChanged -= OnCurrencyBalanceChanged;

@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-
 
 public class UiController : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class UiController : MonoBehaviour
         gameEvents.OnGameLost += OnGameLost;
         gameEvents.OnGameWin += OnGameWin;
     }
-    
+
     private void OnDisable()
     {
         gameEvents.OnGameLost -= OnGameLost;

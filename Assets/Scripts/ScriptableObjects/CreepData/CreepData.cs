@@ -5,12 +5,12 @@ public class CreepData : ScriptableObject
 {
     public float TravelSpeed;
     public float MaxLife;
-    
-    [Header("Hit Info")]
+
+    [Header("Hit Info")] 
     public float HitDamage;
     public float HitRange;
     public float HitRate;
-    
-    [Header("Economy")]
+
+    [Header("Economy")] 
     public int Reward;
 }

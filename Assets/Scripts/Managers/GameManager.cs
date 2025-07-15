@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameEvents gameEvents;
-    
+
     public bool LevelFailed { get; private set; }
     public bool LevelWin { get; private set; }
 
@@ -18,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     {
         LevelFailed = false;
         LevelWin = false;
-        
+
         gameEvents.TriggerGameStart();
     }
 
@@ -35,7 +33,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (LevelWin)
             return;
-        
+
         LevelFailed = true;
         gameEvents.TriggerGameLost();
     }

@@ -1,12 +1,11 @@
-
-using System;
 using EventChannels.WaveEvents;
 using UnityEngine;
 
 public class CurrencyManager : Singleton<CurrencyManager>
 {
-    [Header("Event Channels")] 
-    [SerializeField] private WaveEvents waveEvents;
+    [Header("Event Channels")] [SerializeField]
+    private WaveEvents waveEvents;
+
     [SerializeField] private CreepEvents creepEvents;
     [SerializeField] private CurrencyEvents currencyEvents;
     [SerializeField] private GameEvents gameEvents;
@@ -20,7 +19,7 @@ public class CurrencyManager : Singleton<CurrencyManager>
         get => _currentCoins;
         set
         {
-            _currentCoins = value; 
+            _currentCoins = value;
             currencyEvents.TriggerCurrencyChanged(value);
         }
     }
@@ -39,9 +38,15 @@ public class CurrencyManager : Singleton<CurrencyManager>
         creepEvents.OnCreepDestroyed -= OnCreepDestroyed;
     }
 
-    private void OnWaveFinished(WaveData waveData) => AddCurrency(waveData.WaveSuccessReward);
+    private void OnWaveFinished(WaveData waveData)
+    {
+        AddCurrency(waveData.WaveSuccessReward);
+    }
 
-    private void OnCreepDestroyed(CreepData creepData) => AddCurrency(creepData.Reward);
+    private void OnCreepDestroyed(CreepData creepData)
+    {
+        AddCurrency(creepData.Reward);
+    }
 
     private void OnGameStart()
     {
@@ -52,12 +57,12 @@ public class CurrencyManager : Singleton<CurrencyManager>
     {
         if (CurrentCoins < cost)
             return false;
-        
+
         CurrentCoins -= cost;
         return true;
     }
 
-    void AddCurrency(int amount)
+    private void AddCurrency(int amount)
     {
         CurrentCoins += amount;
     }

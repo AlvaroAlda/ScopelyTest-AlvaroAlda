@@ -3,13 +3,14 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour where T : Component
 {
     private static T instance;
+
     public static T SharedInstance
     {
         get
         {
-            if (instance != null) 
+            if (instance != null)
                 return instance;
-            
+
             instance = FindObjectOfType<T>();
             if (instance == null)
             {
@@ -18,10 +19,11 @@ public class Singleton<T> : MonoBehaviour where T : Component
 
                 instance = obj.AddComponent<T>();
             }
+
             return instance;
         }
     }
-    
+
     public virtual void Awake()
     {
         if (instance == null)
@@ -35,4 +37,3 @@ public class Singleton<T> : MonoBehaviour where T : Component
         }
     }
 }
-
