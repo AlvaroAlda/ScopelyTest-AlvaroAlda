@@ -53,12 +53,6 @@ public class Creep : BasePooledObject, ITurretTarget
             DestroyTarget();
     }
 
-    //TODO: Remove this in the future
-    private void OnMouseDown()
-    {
-        DestroyTarget();
-    }
-
     public void DestroyTarget()
     {
         TargetDestroyed = true;
@@ -95,6 +89,7 @@ public class Creep : BasePooledObject, ITurretTarget
 
     protected override void OnSpawn()
     {
+        TargetDestroyed = false;
         _currentLife = creepData.MaxLife;
     }
 
