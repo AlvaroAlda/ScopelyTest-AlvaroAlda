@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ObjectPool;
 using UnityEngine;
 
@@ -7,9 +8,13 @@ public class Creep : BasePooledObject, ITurretTarget
     [SerializeField] private CreepEvents creepEvents;
     [SerializeField] private GameEvents gameEvents;
 
+    private List<BaseStatusEffect> _statusEffects = new(); 
+    
     private bool _creepInitialized;
     private float _currentLife;
     private float _hitTime;
+
+    public float SpeedMultiplier { get; set; } = 1;
     
     private DefendingBase _defendingBase;
     public Vector3 TargetPosition => transform.position;
@@ -38,14 +43,37 @@ public class Creep : BasePooledObject, ITurretTarget
         if (!_creepInitialized || !gameObject.activeInHierarchy)
             return;
 
+        UpdateStatusEffects();
+
         var distance = Vector3.Distance(_defendingBase.transform.position, transform.position);
         if (distance <= creepData.HitRange)
             EvaluateHitBase();
 
         else
-            transform.position += transform.forward * (Time.deltaTime * creepData.TravelSpeed);
+            transform.position += transform.forward * (Time.deltaTime * creepData.TravelSpeed * SpeedMultiplier);
     }
-    
+
+    private void UpdateStatusEffects()
+    {
+        for (var i = 0; i < _statusEffects.Count; i++)
+        {
+            var effect = _statusEffects[i];
+            effect.Update(this, Time.deltaTime);
+
+            if (effect.IsExpired)
+            {
+                effect.Remove(this);
+                _statusEffects.RemoveAt(i);
+            }
+        }
+    }
+
+    public void AddEffect(BaseStatusEffect effect)
+    {
+        effect.Apply(this);
+        _statusEffects.Add(effect);
+    }
+
     public void HitTarget(float damage)
     {
         _currentLife -= damage;
@@ -96,6 +124,8 @@ public class Creep : BasePooledObject, ITurretTarget
     protected override void OnDespawn()
     {
         TurretTargetProvider.RemoveActiveTarget(this);
+        
         _currentLife = creepData.MaxLife;
+        _statusEffects = new List<BaseStatusEffect>();
     }
 }

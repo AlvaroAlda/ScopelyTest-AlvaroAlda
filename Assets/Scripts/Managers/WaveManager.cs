@@ -14,17 +14,18 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private WaveData[] waves;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private DefendingBase defendingBase;
-    private int _currentCreepsSpawned;
-
+    
     private WaveData _currentWave;
-    private int _killedCreeps;
-    private float _spawnCreepTime;
-    private int _waveIndex = -1;
-
+    
     private bool _waveRunning;
-
+    
+    private int _waveIndex = -1;
+    private int _currentCreepsSpawned;
+    private int _killedCreeps;
+    
+    private float _spawnCreepTime;
     private float _waveStartTime;
-
+    
     private void Update()
     {
         if (!_currentWave || _currentCreepsSpawned >= _currentWave.TotalCreepsToSpawn ||
@@ -85,6 +86,7 @@ public class WaveManager : MonoBehaviour
         }
 
         _waveStartTime = 0;
+        _killedCreeps = 0;
         _currentCreepsSpawned = 0;
         _currentWave = waves[_waveIndex];
 
