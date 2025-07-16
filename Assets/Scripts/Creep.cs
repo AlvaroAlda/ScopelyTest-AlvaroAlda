@@ -67,10 +67,11 @@ public class Creep : BasePooledObject, ITurretTarget
     public void InitCreep(DefendingBase defendingBase, Vector3 spawningPoint)
     {
         _defendingBase = defendingBase;
+        _currentLife = creepData.MaxLife;
 
         transform.position = spawningPoint;
         transform.LookAt(defendingBase.transform);
-
+        
         _creepInitialized = true;
     }
 
@@ -90,11 +91,12 @@ public class Creep : BasePooledObject, ITurretTarget
     protected override void OnSpawn()
     {
         TargetDestroyed = false;
-        _currentLife = creepData.MaxLife;
+        TurretTargetProvider.AddActiveTarget(this);
     }
 
     protected override void OnDespawn()
     {
+        TurretTargetProvider.RemoveActiveTarget(this);
         _currentLife = creepData.MaxLife;
     }
 }
