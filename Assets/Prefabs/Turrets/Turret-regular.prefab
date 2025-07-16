@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6599087532123913263}
   - component: {fileID: 4880382033415642267}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9af0f7e2e18c73428cfc4b9c6b5d43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleTransform: {fileID: 8485606153464308207}
   turretData: {fileID: 11400000, guid: e4b1a3583913b894184b99bbcda6ecbb, type: 2}
+  bullet: {fileID: 3368552408476929940, guid: 3a737353eb63b8f4a82c3b91e0452f1b, type: 3}
   gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
   line: {fileID: 8555055937881126038}
   showDetectionGizmo: 1
@@ -276,7 +278,7 @@ GameObject:
   - component: {fileID: 9091897347346121206}
   - component: {fileID: 1906066102881031493}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -18,19 +18,6 @@ public class Creep : BasePooledObject, ITurretTarget
     public Vector3 TargetPosition => transform.position;
     public bool TargetDestroyed { get; private set; }
     
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        gameEvents.OnGameStart += OnGameStart;
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        gameEvents.OnGameStart -= OnGameStart;
-    }
-    
     public void InitCreep(DefendingBase defendingBase, Vector3 spawningPoint)
     {
         _defendingBase = defendingBase;
@@ -117,13 +104,21 @@ public class Creep : BasePooledObject, ITurretTarget
         }
     }
 
-    protected override void OnSpawn() { }
+    protected override void OnSpawn()
+    {
+        gameEvents.OnGameStart += OnGameStart;
+    }
 
     protected override void OnDespawn()
     {
+        gameEvents.OnGameStart -= OnGameStart;
         TurretTargetProvider.RemoveActiveTarget(this);
         
         _currentLife = creepData.MaxLife;
+
+        foreach (var effect in _statusEffects)
+            effect.Remove(this);
+        
         _statusEffects = new List<BaseStatusEffect>();
     }
 }

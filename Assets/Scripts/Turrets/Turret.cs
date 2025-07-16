@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Turret : BasePooledObject
 {
+    [SerializeField] private Transform muzzleTransform;
     [SerializeField] private TurretData turretData;
+    [SerializeField] private Bullet bullet;
     [SerializeField] private GameEvents gameEvents;
     [SerializeField] private LineRenderer line;
     [SerializeField] private bool showDetectionGizmo;
@@ -14,19 +16,7 @@ public class Turret : BasePooledObject
     private ITurretTarget _currentTarget;
     
     public TurretData TurretData => turretData;
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        gameEvents.OnGameStart += OnGameStart;
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        gameEvents.OnGameStart -= OnGameStart;
-    }
-
+    
     private void OnGameStart()
     {
         gameObject.SetActive(false);
@@ -56,7 +46,9 @@ public class Turret : BasePooledObject
         if (_shootingTimer >= 1 / turretData.FiringRate)
         {
             _shootingTimer = 0;
-            _currentTarget.HitTarget(10); //TODO: Move to bullet
+            var shotBullet = (Bullet)PoolProvider.SharedInstance.GetPrefab(bullet);
+            shotBullet.InitBullet(_currentTarget, muzzleTransform.position);
+            shotBullet.gameObject.SetActive(true);
         }
 
         else
@@ -89,11 +81,13 @@ public class Turret : BasePooledObject
     protected override void OnSpawn()
     {
         //Reset fire rate
+        gameEvents.OnGameStart += OnGameStart;
         _shootingTimer = 1 / turretData.FiringRate;
     }
 
     protected override void OnDespawn()
     {
+        gameEvents.OnGameStart -= OnGameStart;
         _currentTarget = null;
         transform.rotation = Quaternion.identity;
     }

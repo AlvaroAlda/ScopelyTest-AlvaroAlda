@@ -1,18 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
+using ObjectPool;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : BasePooledObject
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float distanceThreshold;
+    [SerializeField] private BaseBulletBehavior bulletBehavior;
+    [SerializeField] private GameEvents gameEvents;
+
+    private ITurretTarget _target;
+    private Vector3 _targetShootingPosition;
+    private Vector3 _direction;
+    
+    private void OnGameStart()
     {
-        
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitBullet(ITurretTarget target, Vector3 spawnPosition)
     {
+        _target = target;
+        transform.position = spawnPosition;
+
+        _targetShootingPosition = new Vector3(_target.TargetPosition.x, transform.position.y, _target.TargetPosition.z);
+        _direction = (_targetShootingPosition - transform.position).normalized;
+    }
+
+    private void Update()
+    {
+        bulletBehavior.Travel(this, _direction);
+
+        var activeTargets = TurretTargetProvider.ActiveTurretTargets;
+        if (activeTargets.Count <= 0)
+            return;
         
+        var closestTargets = activeTargets
+            .Where(x => Vector3.Distance(x.TargetPosition , transform.position) <= distanceThreshold)
+            .ToList();
+
+        if (closestTargets.Any())
+        {
+            bulletBehavior.ReachTarget(this, closestTargets[0]);
+            gameObject.SetActive(false);
+        }
+    }
+
+    protected override void OnSpawn()
+    {
+        gameEvents.OnGameStart += OnGameStart;
+    }
+
+    protected override void OnDespawn()
+    {
+        gameEvents.OnGameStart -= OnGameStart;
     }
 }

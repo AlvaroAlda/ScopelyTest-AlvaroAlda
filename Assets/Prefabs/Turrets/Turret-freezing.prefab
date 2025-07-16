@@ -9,6 +9,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7251660065042579551, guid: ad95cf0532fb840edb99302196037be4,
         type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1390790393112776066, guid: a56940e543f09214a93ee9151491494b,
+        type: 3}
+    - target: {fileID: -7251660065042579551, guid: ad95cf0532fb840edb99302196037be4,
+        type: 3}
       propertyPath: turretData
       value: 
       objectReference: {fileID: 11400000, guid: 0a29dff90b0e30c44845837b2996a0da,
