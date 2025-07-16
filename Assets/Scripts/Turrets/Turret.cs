@@ -7,9 +7,8 @@ public class Turret : BasePooledObject
 {
     [SerializeField] private TurretData turretData;
     [SerializeField] private GameEvents gameEvents;
+    [SerializeField] private LineRenderer line;
     [SerializeField] private bool showDetectionGizmo;
-    
-    private Collider[] _detectedColliders = new Collider[10];
     
     public TurretData TurretData => turretData;
     private ITurretTarget _currentTarget;
@@ -33,40 +32,31 @@ public class Turret : BasePooledObject
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Detected");
-        
-        if (TryGetTarget(other, out var turretTarget)) 
-            return;
-        
-        Debug.Log("TRIGGER DETECTED");
-        _currentTarget = turretTarget;
-    }
-
-    private static bool TryGetTarget(Component other, out ITurretTarget turretTarget)
-    {
-        turretTarget = other.GetComponent<ITurretTarget>();
-        return turretTarget == null || turretTarget.TargetDestroyed;
-    }
-
     private void Update()
     {
-        if (_currentTarget == null || _currentTarget.TargetDestroyed)
+        if (_currentTarget == null || _currentTarget.TargetDestroyed ||
+            Vector3.Distance(_currentTarget.TargetPosition, transform.position) > turretData.Range)
+        {
             ActiveSearch();
+        }
 
         else
+        {
             ShootTarget();
+        }
     }
 
     private void ShootTarget()
     {
         transform.LookAt(_currentTarget.TargetPosition);
         
+        line.SetPosition(0, line.transform.position);
+        line.SetPosition(1, new Vector3(_currentTarget.TargetPosition.x, line.GetPosition(1).y, _currentTarget.TargetPosition.z));
+        
         if (_shootingTimer >= 1 / turretData.FiringRate)
         {
             _shootingTimer = 0;
-            _currentTarget.HitTarget(20);
+            _currentTarget.HitTarget(10); //TODO: Move to bullet
         }
 
         else
@@ -78,6 +68,7 @@ public class Turret : BasePooledObject
     private void ActiveSearch()
     {
         //Ensure cleaning current target reference
+        line.enabled = false;
         _currentTarget = null;
         
         var activeTargets = TurretTargetProvider.ActiveTurretTargets;
@@ -89,11 +80,15 @@ public class Turret : BasePooledObject
             .ToList();
 
         if (closestTargets.Any())
+        {
             _currentTarget = closestTargets[0];
+            line.enabled = true;
+        }
     }
 
     protected override void OnSpawn()
     {
+        //Reset fire rate
         _shootingTimer = 1 / turretData.FiringRate;
     }
 

@@ -60,7 +60,7 @@ public class Creep : BasePooledObject, ITurretTarget
         //Trigger event
         creepEvents.TriggerCreepDestroyed(creepData);
 
-        _creepInitialized = true;
+        _creepInitialized = false;
         gameObject.SetActive(false);
     }
 
@@ -71,6 +71,9 @@ public class Creep : BasePooledObject, ITurretTarget
 
         transform.position = spawningPoint;
         transform.LookAt(defendingBase.transform);
+        
+        TargetDestroyed = false;
+        TurretTargetProvider.AddActiveTarget(this);
         
         _creepInitialized = true;
     }
@@ -88,11 +91,7 @@ public class Creep : BasePooledObject, ITurretTarget
         }
     }
 
-    protected override void OnSpawn()
-    {
-        TargetDestroyed = false;
-        TurretTargetProvider.AddActiveTarget(this);
-    }
+    protected override void OnSpawn() { }
 
     protected override void OnDespawn()
     {

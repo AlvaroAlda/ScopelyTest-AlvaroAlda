@@ -17,7 +17,6 @@ namespace ObjectPool
             if(_objectPools.TryGetValue(prefab.name.GetHashCode(), out var pool))
             {
                 var pooledObject = pool.Get();
-                pooledObject.gameObject.SetActive(true);
                 return pooledObject;
             }
 

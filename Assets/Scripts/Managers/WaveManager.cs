@@ -96,8 +96,9 @@ public class WaveManager : MonoBehaviour
         var creepPrefab = _currentWave.AvailableCreeps[Random.Range(0, _currentWave.AvailableCreeps.Length)];
         
         var creep = (Creep)PoolProvider.SharedInstance.GetPrefab(creepPrefab);
+        creep.gameObject.SetActive(true);
         creep.InitCreep(defendingBase, spawnPoints[Random.Range(0, spawnPoints.Length)].position);
-
+        
         _spawnCreepTime = 0;
         _currentCreepsSpawned++;
     }

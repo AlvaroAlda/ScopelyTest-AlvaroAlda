@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public static class TurretTargetProvider
 {
-    public static HashSet<ITurretTarget> ActiveTurretTargets = new HashSet<ITurretTarget>();
+    public static readonly HashSet<ITurretTarget> ActiveTurretTargets = new HashSet<ITurretTarget>();
 
     public static void AddActiveTarget(ITurretTarget target)
     {

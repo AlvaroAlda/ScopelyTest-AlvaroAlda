@@ -15,6 +15,6 @@ MonoBehaviour:
   AvailableCreeps:
   - {fileID: 7385218276953948586, guid: e432f97cfc9ec0646898a611121a14ed, type: 3}
   WaveStartDelay: 0.4
-  SpawnFrequency: 1
-  TotalCreepsToSpawn: 20
+  SpawnFrequency: 3
+  TotalCreepsToSpawn: 40
   WaveSuccessReward: 100
