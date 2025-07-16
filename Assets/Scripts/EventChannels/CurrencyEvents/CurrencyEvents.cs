@@ -8,6 +8,6 @@ public class CurrencyEvents : ScriptableObject
 
     public void TriggerCurrencyChanged(int currencyAmount)
     {
-        OnCurrencyBalanceChanged?.Invoke(currencyAmount);
+        OnCurrencyBalanceChanged.Invoke(currencyAmount);
     }
 }

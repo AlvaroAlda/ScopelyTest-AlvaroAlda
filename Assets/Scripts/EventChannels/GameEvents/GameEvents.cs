@@ -5,22 +5,21 @@ using UnityEngine.Events;
 public class GameEvents : ScriptableObject
 {
     public UnityAction OnGameLost = delegate { };
-
     public UnityAction OnGameStart = delegate { };
     public UnityAction OnGameWin = delegate { };
 
     public void TriggerGameWin()
     {
-        OnGameWin?.Invoke();
+        OnGameWin.Invoke();
     }
 
     public void TriggerGameLost()
     {
-        OnGameLost?.Invoke();
+        OnGameLost.Invoke();
     }
 
     public void TriggerGameStart()
     {
-        OnGameStart?.Invoke();
+        OnGameStart.Invoke();
     }
 }

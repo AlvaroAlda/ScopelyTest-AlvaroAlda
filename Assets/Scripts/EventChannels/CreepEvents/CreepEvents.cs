@@ -8,6 +8,6 @@ public class CreepEvents : ScriptableObject
 
     public void TriggerCreepDestroyed(CreepData creepData)
     {
-        OnCreepDestroyed?.Invoke(creepData);
+        OnCreepDestroyed.Invoke(creepData);
     }
 }
