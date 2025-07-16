@@ -10,10 +10,10 @@ public class Turret : BasePooledObject
     [SerializeField] private LineRenderer line;
     [SerializeField] private bool showDetectionGizmo;
     
-    public TurretData TurretData => turretData;
-    private ITurretTarget _currentTarget;
-
     private float _shootingTimer;
+    private ITurretTarget _currentTarget;
+    
+    public TurretData TurretData => turretData;
 
     protected override void OnEnable()
     {

@@ -7,16 +7,14 @@ public class Creep : BasePooledObject, ITurretTarget
     [SerializeField] private CreepData creepData;
     [SerializeField] private CreepEvents creepEvents;
     [SerializeField] private GameEvents gameEvents;
-
-    private List<BaseStatusEffect> _statusEffects = new(); 
     
     private bool _creepInitialized;
     private float _currentLife;
     private float _hitTime;
-
-    public float SpeedMultiplier { get; set; } = 1;
-    
     private DefendingBase _defendingBase;
+    private List<BaseStatusEffect> _statusEffects = new(); 
+    
+    public float SpeedMultiplier { get; set; } = 1;
     public Vector3 TargetPosition => transform.position;
     public bool TargetDestroyed { get; private set; }
     
@@ -31,6 +29,20 @@ public class Creep : BasePooledObject, ITurretTarget
     {
         base.OnDisable();
         gameEvents.OnGameStart -= OnGameStart;
+    }
+    
+    public void InitCreep(DefendingBase defendingBase, Vector3 spawningPoint)
+    {
+        _defendingBase = defendingBase;
+        _currentLife = creepData.MaxLife;
+
+        transform.position = spawningPoint;
+        transform.LookAt(defendingBase.transform);
+        
+        TargetDestroyed = false;
+        TurretTargetProvider.AddActiveTarget(this);
+        
+        _creepInitialized = true;
     }
     
     private void OnGameStart()
@@ -60,11 +72,11 @@ public class Creep : BasePooledObject, ITurretTarget
             var effect = _statusEffects[i];
             effect.Update(this, Time.deltaTime);
 
-            if (effect.IsExpired)
-            {
-                effect.Remove(this);
-                _statusEffects.RemoveAt(i);
-            }
+            if (!effect.IsExpired) 
+                continue;
+            
+            effect.Remove(this);
+            _statusEffects.RemoveAt(i);
         }
     }
 
@@ -90,20 +102,6 @@ public class Creep : BasePooledObject, ITurretTarget
 
         _creepInitialized = false;
         gameObject.SetActive(false);
-    }
-
-    public void InitCreep(DefendingBase defendingBase, Vector3 spawningPoint)
-    {
-        _defendingBase = defendingBase;
-        _currentLife = creepData.MaxLife;
-
-        transform.position = spawningPoint;
-        transform.LookAt(defendingBase.transform);
-        
-        TargetDestroyed = false;
-        TurretTargetProvider.AddActiveTarget(this);
-        
-        _creepInitialized = true;
     }
 
     private void EvaluateHitBase()
