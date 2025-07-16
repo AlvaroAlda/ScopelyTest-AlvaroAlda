@@ -7,13 +7,16 @@ public class Turret : BasePooledObject
     [SerializeField] private TurretData turretData;
     [SerializeField] private GameEvents gameEvents;
     [SerializeField] private SphereCollider detectionCollider;
+
+    [SerializeField] private bool showDetectionGizmo;
+    [SerializeField] private SpriteRenderer detectionGizmo;
     
     public TurretData TurretData => turretData;
     private ITurretTarget _currentTarget;
 
     private void Awake()
     {
-        detectionCollider.radius = turretData.Range;
+        UpdateRange();
     }
 
     protected override void OnEnable()
@@ -26,6 +29,13 @@ public class Turret : BasePooledObject
     {
         base.OnDisable();
         gameEvents.OnGameStart -= OnGameStart;
+    }
+    
+    private void UpdateRange()
+    {
+        detectionCollider.radius = turretData.Range;
+        detectionGizmo.enabled = showDetectionGizmo;
+        detectionGizmo.transform.localScale *= turretData.Range * 2;
     }
 
     private void OnGameStart()
