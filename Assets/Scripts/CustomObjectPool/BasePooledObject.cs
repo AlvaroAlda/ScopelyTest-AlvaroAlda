@@ -8,7 +8,7 @@ namespace CustomObjectPool
         protected abstract void OnDespawn();
         
         public int PrefabId { get; set; }
-        private static bool _isQuitting = false;
+        private static bool _isQuitting;
 
         protected virtual void OnEnable()
         {

@@ -15,7 +15,8 @@ namespace CustomObjectPool
 
         public BasePooledObject GetPrefab(BasePooledObject prefab)
         {
-            if(_objectPools.TryGetValue(prefab.name.GetHashCode(), out var pool))
+            var prefabId = prefab.name.GetHashCode();
+            if(_objectPools.TryGetValue(prefabId, out var pool))
             {
                 var pooledObject = pool.Get();
                 return pooledObject;
@@ -25,11 +26,11 @@ namespace CustomObjectPool
             {
                 var pooledObject = Instantiate(prefab);
                 pooledObject.name = prefab.name;
-                pooledObject.PrefabId = prefab.name.GetHashCode();
+                pooledObject.PrefabId = prefabId;
                 return pooledObject;
             });
             
-            _objectPools.Add(prefab.name.GetHashCode(), newPool);
+            _objectPools.Add(prefabId, newPool);
             return newPool.Get();
         }
 
