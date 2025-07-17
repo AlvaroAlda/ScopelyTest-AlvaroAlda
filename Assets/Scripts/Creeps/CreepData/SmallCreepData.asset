@@ -17,4 +17,4 @@ MonoBehaviour:
   HitDamage: 2
   HitRange: 6
   HitRate: 1
-  Reward: 10
+  Reward: 4
