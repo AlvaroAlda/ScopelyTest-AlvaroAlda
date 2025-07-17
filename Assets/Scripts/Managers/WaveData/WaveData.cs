@@ -1,11 +1,15 @@
+using Creeps;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WaveData", menuName = "TowerDefense/NewWave", order = 0)]
-public class WaveData : ScriptableObject
+namespace Managers.WaveData
 {
-    public Creep[] AvailableCreeps;
-    public float WaveStartDelay;
-    public float SpawnFrequency;
-    public int TotalCreepsToSpawn;
-    public int WaveSuccessReward;
+    [CreateAssetMenu(fileName = "WaveData", menuName = "TowerDefense/NewWave", order = 0)]
+    public class WaveData : ScriptableObject
+    {
+        public Creep[] AvailableCreeps;
+        public float WaveStartDelay;
+        public float SpawnFrequency;
+        public int TotalCreepsToSpawn;
+        public int WaveSuccessReward;
+    }
 }

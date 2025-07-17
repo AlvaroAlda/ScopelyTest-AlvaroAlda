@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace ObjectPool
+namespace CustomObjectPool
 {
     public abstract class BasePooledObject : MonoBehaviour
     {

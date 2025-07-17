@@ -1,18 +1,21 @@
-public abstract class BaseStatusEffect
+namespace Creeps.StatusEffects
 {
-    public float Duration { get; protected set; }
-
-    public BaseStatusEffect(float duration)
+    public abstract class BaseStatusEffect
     {
-        Duration = duration;
-    }
+        public float Duration { get; protected set; }
 
-    public abstract void Apply(Creep creep);
-    public abstract void Remove(Creep creep);
-    public virtual void Update(Creep creep, float deltaTime)
-    {
-        Duration -= deltaTime;
-    }
+        public BaseStatusEffect(float duration)
+        {
+            Duration = duration;
+        }
 
-    public bool IsExpired => Duration <= 0f;
+        public abstract void Apply(Creep creep);
+        public abstract void Remove(Creep creep);
+        public virtual void Update(Creep creep, float deltaTime)
+        {
+            Duration -= deltaTime;
+        }
+
+        public bool IsExpired => Duration <= 0f;
+    }
 }

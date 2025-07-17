@@ -1,39 +1,42 @@
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+namespace Managers
 {
-    private static T instance;
-
-    public static T SharedInstance
+    public class Singleton<T> : MonoBehaviour where T : Component
     {
-        get
-        {
-            if (instance != null)
-                return instance;
+        private static T instance;
 
-            instance = FindObjectOfType<T>();
+        public static T SharedInstance
+        {
+            get
+            {
+                if (instance != null)
+                    return instance;
+
+                instance = FindObjectOfType<T>();
+                if (instance == null)
+                {
+                    var obj = new GameObject();
+                    obj.name = typeof(T).Name;
+
+                    instance = obj.AddComponent<T>();
+                }
+
+                return instance;
+            }
+        }
+
+        public virtual void Awake()
+        {
             if (instance == null)
             {
-                var obj = new GameObject();
-                obj.name = typeof(T).Name;
-
-                instance = obj.AddComponent<T>();
+                instance = this as T;
+                DontDestroyOnLoad(gameObject);
             }
-
-            return instance;
-        }
-    }
-
-    public virtual void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this as T;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

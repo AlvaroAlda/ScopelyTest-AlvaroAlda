@@ -1,35 +1,40 @@
+using EventChannels.GameEvents;
+using Managers;
 using UnityEngine;
 
-public class UiController : MonoBehaviour
+namespace Ui
 {
-    [SerializeField] private GameObject winPopup;
-    [SerializeField] private GameObject losePopup;
-    [SerializeField] private GameEvents gameEvents;
-
-    private void OnEnable()
+    public class UiController : MonoBehaviour
     {
-        gameEvents.OnGameLost += OnGameLost;
-        gameEvents.OnGameWin += OnGameWin;
-    }
+        [SerializeField] private GameObject winPopup;
+        [SerializeField] private GameObject losePopup;
+        [SerializeField] private GameEvents gameEvents;
 
-    private void OnDisable()
-    {
-        gameEvents.OnGameLost -= OnGameLost;
-        gameEvents.OnGameWin -= OnGameWin;
-    }
+        private void OnEnable()
+        {
+            gameEvents.OnGameLost += OnGameLost;
+            gameEvents.OnGameWin += OnGameWin;
+        }
 
-    private void OnGameWin()
-    {
-        winPopup.gameObject.SetActive(true);
-    }
+        private void OnDisable()
+        {
+            gameEvents.OnGameLost -= OnGameLost;
+            gameEvents.OnGameWin -= OnGameWin;
+        }
 
-    private void OnGameLost()
-    {
-        losePopup.gameObject.SetActive(true);
-    }
+        private void OnGameWin()
+        {
+            winPopup.gameObject.SetActive(true);
+        }
 
-    public void StartNewGame()
-    {
-        GameManager.SharedInstance.StartNewGame();
+        private void OnGameLost()
+        {
+            losePopup.gameObject.SetActive(true);
+        }
+
+        public void StartNewGame()
+        {
+            GameManager.SharedInstance.StartNewGame();
+        }
     }
 }

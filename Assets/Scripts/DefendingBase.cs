@@ -1,4 +1,7 @@
+using EventChannels.GameEvents;
+using Managers;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DefendingBase : MonoBehaviour
 {
@@ -8,6 +11,9 @@ public class DefendingBase : MonoBehaviour
     [SerializeField] private GameEvents gameEvents;
 
     private float _currentLife;
+
+    public UnityEvent<float> onBaseReset;
+    public UnityEvent<float> onBaseDamaged;
 
     private void OnEnable()
     {
@@ -22,6 +28,7 @@ public class DefendingBase : MonoBehaviour
     private void OnGameStart()
     {
         _currentLife = baseLife;
+        onBaseReset?.Invoke(_currentLife);
         UpdateHealthVisual();
     }
 
@@ -31,6 +38,8 @@ public class DefendingBase : MonoBehaviour
             return;
 
         _currentLife -= damage;
+        onBaseDamaged?.Invoke(_currentLife);
+        
         UpdateHealthVisual();
 
         if (_currentLife <= 0)

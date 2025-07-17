@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ObjectPool
+namespace CustomObjectPool
 {
     public class ObjectPool<T>
     {

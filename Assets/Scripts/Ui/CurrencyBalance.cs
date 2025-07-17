@@ -1,23 +1,27 @@
+using EventChannels.CurrencyEvents;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CurrencyBalance : MonoBehaviour
+namespace Ui
 {
-    [SerializeField] private CurrencyEvents currencyEvents;
-    [SerializeField] private Text currencyText;
-
-    private void OnEnable()
+    public class CurrencyBalance : MonoBehaviour
     {
-        currencyEvents.OnCurrencyBalanceChanged += OnCurrencyBalanceChanged;
-    }
+        [SerializeField] private CurrencyEvents currencyEvents;
+        [SerializeField] private Text currencyText;
 
-    private void OnDisable()
-    {
-        currencyEvents.OnCurrencyBalanceChanged -= OnCurrencyBalanceChanged;
-    }
+        private void OnEnable()
+        {
+            currencyEvents.OnCurrencyBalanceChanged += OnCurrencyBalanceChanged;
+        }
 
-    private void OnCurrencyBalanceChanged(int amount)
-    {
-        currencyText.text = amount.ToString();
+        private void OnDisable()
+        {
+            currencyEvents.OnCurrencyBalanceChanged -= OnCurrencyBalanceChanged;
+        }
+
+        private void OnCurrencyBalanceChanged(int amount)
+        {
+            currencyText.text = amount.ToString();
+        }
     }
 }

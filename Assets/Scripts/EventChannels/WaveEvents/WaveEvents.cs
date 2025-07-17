@@ -1,3 +1,4 @@
+using Managers.WaveData;
 using UnityEngine;
 using UnityEngine.Events;
 

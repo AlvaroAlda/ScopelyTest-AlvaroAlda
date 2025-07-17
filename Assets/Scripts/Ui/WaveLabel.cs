@@ -1,24 +1,28 @@
 using EventChannels.WaveEvents;
+using Managers.WaveData;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveLabel : MonoBehaviour
+namespace Ui
 {
-    [SerializeField] private Text waveText;
-    [SerializeField] private WaveEvents waveEvents;
-
-    private void OnEnable()
+    public class WaveLabel : MonoBehaviour
     {
-        waveEvents.OnWaveStarted += OnWaveStarted;
-    }
+        [SerializeField] private Text waveText;
+        [SerializeField] private WaveEvents waveEvents;
 
-    private void OnDisable()
-    {
-        waveEvents.OnWaveStarted -= OnWaveStarted;
-    }
+        private void OnEnable()
+        {
+            waveEvents.OnWaveStarted += OnWaveStarted;
+        }
 
-    private void OnWaveStarted(WaveData waveData, int index)
-    {
-        waveText.text = (index + 1).ToString();
+        private void OnDisable()
+        {
+            waveEvents.OnWaveStarted -= OnWaveStarted;
+        }
+
+        private void OnWaveStarted(WaveData waveData, int index)
+        {
+            waveText.text = (index + 1).ToString();
+        }
     }
 }

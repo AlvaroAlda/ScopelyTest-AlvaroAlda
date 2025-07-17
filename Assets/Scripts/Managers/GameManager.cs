@@ -1,40 +1,44 @@
+using EventChannels.GameEvents;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+namespace Managers
 {
-    [SerializeField] private GameEvents gameEvents;
-
-    public bool LevelFailed { get; private set; }
-    public bool LevelWin { get; private set; }
-
-    private void Start()
+    public class GameManager : Singleton<GameManager>
     {
-        StartNewGame();
-    }
+        [SerializeField] private GameEvents gameEvents;
 
-    public void StartNewGame()
-    {
-        LevelFailed = false;
-        LevelWin = false;
+        public bool LevelFailed { get; private set; }
+        public bool LevelWin { get; private set; }
 
-        gameEvents.TriggerGameStart();
-    }
+        private void Start()
+        {
+            StartNewGame();
+        }
 
-    public void WinGame()
-    {
-        if (LevelFailed)
-            return;
+        public void StartNewGame()
+        {
+            LevelFailed = false;
+            LevelWin = false;
 
-        LevelWin = true;
-        gameEvents.TriggerGameWin();
-    }
+            gameEvents.TriggerGameStart();
+        }
 
-    public void LoseGame()
-    {
-        if (LevelWin)
-            return;
+        public void WinGame()
+        {
+            if (LevelFailed)
+                return;
 
-        LevelFailed = true;
-        gameEvents.TriggerGameLost();
+            LevelWin = true;
+            gameEvents.TriggerGameWin();
+        }
+
+        public void LoseGame()
+        {
+            if (LevelWin)
+                return;
+
+            LevelFailed = true;
+            gameEvents.TriggerGameLost();
+        }
     }
 }

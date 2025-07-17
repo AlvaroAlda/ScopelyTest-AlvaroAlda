@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Managers;
 
-namespace ObjectPool
+namespace CustomObjectPool
 {
     public class PoolProvider : Singleton<PoolProvider>
     {
