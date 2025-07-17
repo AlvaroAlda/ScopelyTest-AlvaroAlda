@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TravelSpeed: 2
   MaxLife: 20
-  HitDamage: 4
-  HitRange: 7
-  HitRate: 0.5
+  HitDamage: 4.5
+  HitRange: 3
+  HitRate: 1
   Reward: 6

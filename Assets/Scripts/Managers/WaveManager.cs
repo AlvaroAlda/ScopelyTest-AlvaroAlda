@@ -46,6 +46,7 @@ namespace Managers
         private void OnGameStart()
         {
             _waveIndex = -1;
+            StopSpawningCoroutine();
             StartNextWave();
         }
         

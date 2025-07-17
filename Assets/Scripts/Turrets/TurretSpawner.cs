@@ -48,7 +48,7 @@ namespace Turrets
                     return;
             
                 var turret = PoolProvider.SharedInstance.GetPrefab(_selectedTurret);
-                var turretPosition = _mainCamera.GetMousePositionInPlaneXZ(Input.mousePosition, _mainCamera.transform.position.y);
+                var turretPosition = _mainCamera.GetMousePositionInPlaneXZ(Input.mousePosition);
                 
                 turret.transform.position = turretPosition;
                 turret.gameObject.SetActive(true);
