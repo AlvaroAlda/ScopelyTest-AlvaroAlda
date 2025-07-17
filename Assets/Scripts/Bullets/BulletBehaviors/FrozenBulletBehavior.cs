@@ -10,9 +10,11 @@ namespace Bullets.BulletBehaviors
     {
         [SerializeField] [Range(0, 1)] private float slowDownFactor = 0.2f;
         [SerializeField] private float slowDownDuration = 0.5f;
+        [SerializeField] private float damage = 1f;
     
         public override void ReachTarget(Bullet bullet, ITurretTarget target)
         {
+            target.HitTarget(damage);
             var frozenEffect = new FreezeEffect(slowDownDuration, slowDownFactor);
         
             if (target is Creep creep)
