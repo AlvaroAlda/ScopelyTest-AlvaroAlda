@@ -48,4 +48,4 @@ MonoBehaviour:
   creepEvents: {fileID: 11400000, guid: b95bcc3f762861648bad173b03dabe13, type: 2}
   currencyEvents: {fileID: 11400000, guid: e37956b56ad0f764bbe6b69d59ae0837, type: 2}
   gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
-  initCoins: 100
+  initCoins: 30

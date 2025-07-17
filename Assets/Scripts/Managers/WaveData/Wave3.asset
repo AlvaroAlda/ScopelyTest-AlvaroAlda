@@ -18,4 +18,4 @@ MonoBehaviour:
   WaveStartDelay: 0.3
   SpawnFrequency: 1
   TotalCreepsToSpawn: 20
-  WaveSuccessReward: 175
+  WaveSuccessReward: 15
