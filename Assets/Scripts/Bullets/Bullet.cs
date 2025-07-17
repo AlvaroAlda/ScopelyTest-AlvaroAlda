@@ -53,5 +53,6 @@ public class Bullet : BasePooledObject
     protected override void OnDespawn()
     {
         gameEvents.OnGameStart -= OnGameStart;
+        bulletBehavior.ResetBullet(this);
     }
 }

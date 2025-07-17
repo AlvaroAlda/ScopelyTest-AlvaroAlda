@@ -41,7 +41,7 @@ public class Turret : BasePooledObject
         transform.LookAt(_currentTarget.TargetPosition);
         
         line.SetPosition(0, line.transform.position);
-        line.SetPosition(1, new Vector3(_currentTarget.TargetPosition.x, line.GetPosition(1).y, _currentTarget.TargetPosition.z));
+        line.SetPosition(1, new Vector3(_currentTarget.TargetPosition.x, line.GetPosition(0).y, _currentTarget.TargetPosition.z));
         
         if (_shootingTimer >= 1 / turretData.FiringRate)
         {

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1ffea5d404462bb1344d02225f5cca, type: 3}
   m_Name: FrozenBullet
   m_EditorClassIdentifier: 
-  bulletSpeed: 30
+  bulletSpeed: 40
+  lifeTime: 4
   slowDownFactor: 0.3
-  slowDownDuration: 0.5
+  slowDownDuration: 1
