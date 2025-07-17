@@ -73,7 +73,7 @@ namespace Turrets
         
             var closestTargets = activeTargets
                 .Where(x => Vector3.Distance(x.TargetPosition , transform.position) <= turretData.Range)
-                .ToList();
+                .ToArray();
 
             if (closestTargets.Any())
             {

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FrozenBullet
   m_EditorClassIdentifier: 
   bulletSpeed: 40
-  lifeTime: 4
+  lifeTime: 2
   slowDownFactor: 0.3
   slowDownDuration: 1

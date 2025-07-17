@@ -49,7 +49,9 @@ MonoBehaviour:
   gameEvents: {fileID: 11400000, guid: f1e5fbeaeb8998e47b68713492ce3af1, type: 2}
   waves:
   - {fileID: 11400000, guid: 6df92329e7f1a0b4aad90c8cf4a61577, type: 2}
-  - {fileID: 11400000, guid: 6df92329e7f1a0b4aad90c8cf4a61577, type: 2}
+  - {fileID: 11400000, guid: b6c01e8551b10aa469775a7b5b0ac57e, type: 2}
+  - {fileID: 11400000, guid: 0a876f9e12a49084e920d9274fd5c9b7, type: 2}
+  - {fileID: 11400000, guid: 7f4415633ea910d45a555126c1c27188, type: 2}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}

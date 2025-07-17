@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4952d670a9504a5599ebac5a6ac9de9a, type: 3}
-  m_Name: BigCreepData
+  m_Script: {fileID: 11500000, guid: 51df51ad576840149ace30c0bc6a0f79, type: 3}
+  m_Name: Wave2
   m_EditorClassIdentifier: 
-  TravelSpeed: 2
-  MaxLife: 20
-  HitDamage: 0
-  HitRange: 7
-  HitRate: 0.5
-  Reward: 20
+  AvailableCreeps:
+  - {fileID: 9138766036858671550, guid: cc1690cde1bfb49158f54df1062eaf1a, type: 3}
+  WaveStartDelay: 0.3
+  SpawnFrequency: 1
+  TotalCreepsToSpawn: 20
+  WaveSuccessReward: 150

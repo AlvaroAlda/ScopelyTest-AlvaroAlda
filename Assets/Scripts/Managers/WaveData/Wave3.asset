@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51df51ad576840149ace30c0bc6a0f79, type: 3}
-  m_Name: WaveData
+  m_Name: Wave3
   m_EditorClassIdentifier: 
   AvailableCreeps:
   - {fileID: 7385218276953948586, guid: e432f97cfc9ec0646898a611121a14ed, type: 3}
   WaveStartDelay: 0.3
   SpawnFrequency: 1
   TotalCreepsToSpawn: 15
-  WaveSuccessReward: 100
+  WaveSuccessReward: 175

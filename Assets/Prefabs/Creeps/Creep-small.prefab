@@ -483,6 +483,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949939747871194958, guid: 93e919d60802ca548b4916706ba66794,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 949939747871194958, guid: 93e919d60802ca548b4916706ba66794,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 949939747871194958, guid: 93e919d60802ca548b4916706ba66794,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 949939747871194958, guid: 93e919d60802ca548b4916706ba66794,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -541,10 +556,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 949939747871194958, guid: 93e919d60802ca548b4916706ba66794,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3273819810893663281, guid: 93e919d60802ca548b4916706ba66794,
         type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674347115090615985, guid: 93e919d60802ca548b4916706ba66794,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93e919d60802ca548b4916706ba66794, type: 3}
