@@ -2,9 +2,9 @@ namespace Creeps.StatusEffects
 {
     public abstract class BaseStatusEffect
     {
-        public float Duration { get; protected set; }
+        private float Duration { get; set; }
 
-        public BaseStatusEffect(float duration)
+        protected BaseStatusEffect(float duration)
         {
             Duration = duration;
         }

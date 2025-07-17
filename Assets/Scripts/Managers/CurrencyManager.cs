@@ -9,9 +9,8 @@ namespace Managers
 {
     public class CurrencyManager : Singleton<CurrencyManager>
     {
-        [Header("Event Channels")] [SerializeField]
-        private WaveEvents waveEvents;
-
+        [Header("Event Channels")] 
+        [SerializeField] private WaveEvents waveEvents;
         [SerializeField] private CreepEvents creepEvents;
         [SerializeField] private CurrencyEvents currencyEvents;
         [SerializeField] private GameEvents gameEvents;

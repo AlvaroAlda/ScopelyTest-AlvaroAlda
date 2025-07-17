@@ -4,33 +4,33 @@ namespace Managers
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {
-        private static T instance;
+        private static T _instance;
 
         public static T SharedInstance
         {
             get
             {
-                if (instance != null)
-                    return instance;
+                if (_instance != null)
+                    return _instance;
 
-                instance = FindObjectOfType<T>();
-                if (instance == null)
+                _instance = FindObjectOfType<T>();
+                if (_instance == null)
                 {
                     var obj = new GameObject();
                     obj.name = typeof(T).Name;
 
-                    instance = obj.AddComponent<T>();
+                    _instance = obj.AddComponent<T>();
                 }
 
-                return instance;
+                return _instance;
             }
         }
 
         public virtual void Awake()
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = this as T;
+                _instance = this as T;
                 DontDestroyOnLoad(gameObject);
             }
             else

@@ -8,7 +8,7 @@ namespace Bullets.BulletBehaviors
         [SerializeField] protected float bulletSpeed;
         [SerializeField] [Tooltip("-1: infinite")]protected float lifeTime = -1;
 
-        protected float CurrentLifeTime;
+        private float _currentLifeTime;
     
         public abstract void ReachTarget(Bullet bullet, ITurretTarget target);
         public virtual void Travel(Bullet bullet, Vector3 direction)
@@ -17,16 +17,16 @@ namespace Bullets.BulletBehaviors
 
             if (lifeTime > 0)
             {
-                CurrentLifeTime += Time.deltaTime;
+                _currentLifeTime += Time.deltaTime;
             
-                if (CurrentLifeTime >= lifeTime)
+                if (_currentLifeTime >= lifeTime)
                     bullet.gameObject.SetActive(false);
             }
         }
 
         public virtual void ResetBullet(Bullet bullet)
         {
-            CurrentLifeTime = 0;
+            _currentLifeTime = 0;
         }
     }
 }

@@ -26,8 +26,8 @@ namespace Creeps
         public Vector3 TargetPosition => transform.position;
         public bool TargetDestroyed { get; private set; }
 
-        public UnityEvent<float> OnCreepSpawned;
-        public UnityEvent<float> OnCreepDamaged;
+        public UnityEvent<float> onCreepSpawned;
+        public UnityEvent<float> onCreepDamaged;
     
         public void InitCreep(DefendingBase defendingBase, Vector3 spawningPoint)
         {
@@ -42,7 +42,7 @@ namespace Creeps
         
             _creepInitialized = true;
             
-            OnCreepSpawned?.Invoke(_currentLife);
+            onCreepSpawned?.Invoke(_currentLife);
         }
     
         private void OnGameStart()
@@ -91,7 +91,7 @@ namespace Creeps
         public void HitTarget(float damage)
         {
             _currentLife -= damage;
-            OnCreepDamaged?.Invoke(_currentLife);
+            onCreepDamaged?.Invoke(_currentLife);
             
             if (_currentLife <= 0)
                 DestroyTarget();
