@@ -10,19 +10,11 @@ namespace Managers
         {
             get
             {
-                if (_instance != null)
+                if (_instance)
                     return _instance;
-
-                _instance = FindObjectOfType<T>();
-                if (_instance == null)
-                {
-                    var obj = new GameObject();
-                    obj.name = typeof(T).Name;
-
-                    _instance = obj.AddComponent<T>();
-                }
-
-                return _instance;
+                
+                var obj = new GameObject { name = typeof(T).Name };
+                return obj.AddComponent<T>();
             }
         }
 

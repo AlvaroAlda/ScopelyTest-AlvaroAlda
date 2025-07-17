@@ -8,7 +8,6 @@ public class Billboard : MonoBehaviour
     private void Awake()
     {
         _mainCamera = Camera.main;
-
         UpdateBillboard();
     }
 

@@ -84,8 +84,9 @@ namespace Turrets
 
         protected override void OnSpawn()
         {
-            //Reset fire rate
             gameEvents.OnGameStart += OnGameStart;
+            
+            //Reset fire rate
             _shootingTimer = 1 / turretData.FiringRate;
         }
 

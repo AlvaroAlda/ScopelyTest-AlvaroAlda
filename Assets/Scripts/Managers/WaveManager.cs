@@ -1,3 +1,4 @@
+using System.Collections;
 using Creeps;
 using Creeps.CreepData;
 using CustomObjectPool;
@@ -13,46 +14,23 @@ namespace Managers
     {
         [Header("Channels")] 
         [SerializeField] private CreepEvents creepEvents;
-
         [SerializeField] private WaveEvents waveEvents;
         [SerializeField] private GameEvents gameEvents;
 
+        [Header("Waves References")]
         [SerializeField] private WaveData.WaveData[] waves;
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private DefendingBase defendingBase;
-    
-        private WaveData.WaveData _currentWave;
-    
+        
         private bool _waveRunning;
     
         private int _waveIndex = -1;
         private int _currentCreepsSpawned;
         private int _killedCreeps;
-    
-        private float _spawnCreepTime;
-        private float _waveStartTime;
-    
-        private void Update()
-        {
-            if (!_currentWave || _currentCreepsSpawned >= _currentWave.TotalCreepsToSpawn ||
-                GameManager.SharedInstance.LevelFailed || GameManager.SharedInstance.LevelWin)
-                return;
-
-            if (_waveStartTime < _currentWave.WaveStartDelay)
-            {
-                _waveStartTime += Time.deltaTime;
-                return;
-            }
-
-            if (_spawnCreepTime < 1 / _currentWave.SpawnFrequency)
-            {
-                _spawnCreepTime += Time.deltaTime;
-                return;
-            }
-
-            SpawnCreep();
-        }
-
+        
+        private Coroutine _spawnCoroutine;
+        private WaveData.WaveData _currentWave;
+        
         private void OnEnable()
         {
             gameEvents.OnGameStart += OnGameStart;
@@ -70,6 +48,25 @@ namespace Managers
             _waveIndex = -1;
             StartNextWave();
         }
+        
+        IEnumerator SpawnCreepCoroutine()
+        {
+            yield return new WaitForSeconds(_currentWave.WaveStartDelay);
+            while (_currentCreepsSpawned < _currentWave.TotalCreepsToSpawn && !GameManager.SharedInstance.LevelFailed) 
+            {
+                SpawnCreep();
+                yield return new WaitForSeconds(1 / _currentWave.SpawnFrequency);
+            }
+        }
+        
+        void StopSpawningCoroutine()
+        {
+            if (_spawnCoroutine != null)
+            {
+                StopCoroutine(_spawnCoroutine);
+                _spawnCoroutine = null;
+            }
+        }
 
         private void OnCreepDestroyed(CreepData creep)
         {
@@ -78,6 +75,7 @@ namespace Managers
             {
                 _killedCreeps = 0;
                 waveEvents.TriggerWaveFinished(_currentWave);
+                StopSpawningCoroutine();
                 StartNextWave();
             }
         }
@@ -90,12 +88,12 @@ namespace Managers
                 GameManager.SharedInstance.WinGame();
                 return;
             }
-
-            _waveStartTime = 0;
+            
             _killedCreeps = 0;
             _currentCreepsSpawned = 0;
             _currentWave = waves[_waveIndex];
-
+            
+            _spawnCoroutine = StartCoroutine(SpawnCreepCoroutine());
             waveEvents.TriggerWaveStarted(_currentWave, _waveIndex);
         }
 
@@ -106,8 +104,7 @@ namespace Managers
             var creep = (Creep)PoolProvider.SharedInstance.GetPrefab(creepPrefab);
             creep.gameObject.SetActive(true);
             creep.InitCreep(defendingBase, spawnPoints[Random.Range(0, spawnPoints.Length)].position);
-        
-            _spawnCreepTime = 0;
+            
             _currentCreepsSpawned++;
         }
     }

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2011b95ee7bf474bb2160a9cd8f4da9d, type: 3}
   m_Name: FreezingTurret
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 0}
   FiringRate: 1
   SpawnPrize: 20
   Range: 9
-  DisplaySprite: {fileID: 21300000, guid: b4d1c140502ca7f4aa0d905e4acf6af7, type: 3}
+  DisplaySprite: {fileID: 21300000, guid: b5e0734d082d29843a3214934f3eacef, type: 3}

@@ -100,8 +100,7 @@ namespace Creeps
         public void DestroyTarget()
         {
             TargetDestroyed = true;
-        
-            //Trigger event
+            
             creepEvents.TriggerCreepDestroyed(creepData);
 
             _creepInitialized = false;

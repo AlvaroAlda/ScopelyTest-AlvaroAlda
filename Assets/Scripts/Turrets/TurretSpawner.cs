@@ -13,8 +13,7 @@ namespace Turrets
 
         private Turret _selectedTurret;
         private Camera _mainCamera;
-    
-        // Start is called before the first frame update
+        
         private void Start()
         {
             InitializeButtons();
@@ -33,12 +32,11 @@ namespace Turrets
             }
         }
 
-        void SelectTurret(Turret turret)
+        private void SelectTurret(Turret turret)
         {
             _selectedTurret = turret;
         }
-    
-        // Update is called once per frame
+        
         private void Update()
         {
             if (GameManager.SharedInstance.LevelFailed || GameManager.SharedInstance.LevelWin)

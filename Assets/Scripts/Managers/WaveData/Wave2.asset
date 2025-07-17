@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AvailableCreeps:
   - {fileID: 7385218276953948586, guid: e432f97cfc9ec0646898a611121a14ed, type: 3}
-  WaveStartDelay: 0.3
+  WaveStartDelay: 1
   SpawnFrequency: 1
   TotalCreepsToSpawn: 20
   WaveSuccessReward: 10
